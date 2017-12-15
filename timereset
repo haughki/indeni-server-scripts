@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+service ntp stop
+ntpdate time.nist.gov
+service ntp restart
+date
