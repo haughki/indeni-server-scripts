@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-collector="/etc/init.d/indeni-collector"
-server="/etc/init.d/indeni-server"
+collector="service indeni-collector"
+server="service indeni-server"
 
 coll_command=""
 serv_command=""
@@ -12,13 +12,12 @@ if [ -z $1 ]; then
 else
     case $1 in
         start)
-            command="${base_command} start"
+            coll_command="${collector} start"
+            serv_command="${server} start"
             ;;
         stop)
-            command="${base_command} stop"
-            ;;
-        restart)
-            command="${base_command} restart"
+            coll_command="${collector} stop"
+            serv_command="${server} stop"
             ;;
         *)
             echo "invalid argument: ${1}"
