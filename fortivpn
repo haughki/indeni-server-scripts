@@ -1,13 +1,22 @@
 #!/usr/bin/expect -f
+
+# Uses expect to login to the VPN without entering a pwrd or any other user interaction. Keeps the 
+# forticlient process running in the background.
+
+# -ignore HUP : Ignore the SIGHUP from expect: When expect exits, it sends a SIGHUP (hangup signal) to the spawned subprocess.
+# By default, this  SIGHUP causes termination of the spawned process.
+# https://stackoverflow.com/questions/17916201/background-spawned-process-in-expect
 spawn -ignore HUP /opt/forticlientsslvpn/64bit/forticlientsslvpn_cli --server https://kdvpn.indeni-ops.com:8443 --vpnuser hparker
+
 expect "Password for VPN:"
 send "@qQ/)k9kum%)@RFD\r"
 expect "Would you like to connect to this server? (Y/N)"
 send "Y\r"
-#interact
 expect "STATUS::Tunnel running"
 send_user "expect says: Tunnel UP\n"
 
+# This is the second part of keeping the forticlient process running after
+# expect quits. I don't quite understand how it works, but it's apparently needed.
 expect_background
 
 exit 0
