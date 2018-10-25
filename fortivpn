@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+spawn -ignore HUP /opt/forticlientsslvpn/64bit/forticlientsslvpn_cli --server https://kdvpn.indeni-ops.com:8443 --vpnuser hparker
+expect "Password for VPN:"
+send "@qQ/)k9kum%)@RFD\r"
+expect "Would you like to connect to this server? (Y/N)"
+send "Y\r"
+#interact
+expect "STATUS::Tunnel running"
+send_user "expect says: Tunnel UP\n"
+
+expect_background
+
+exit 0
