@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+ps aux | egrep --color=always "PID|forti"
+killall forticlientsslvpn_cli
+ps aux | egrep --color=always "PID|forti"
