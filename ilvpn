@@ -6,7 +6,7 @@
 # -ignore HUP : Ignore the SIGHUP from expect: When expect exits, it sends a SIGHUP (hangup signal) to the spawned subprocess.
 # By default, this  SIGHUP causes termination of the spawned process.
 # https://stackoverflow.com/questions/17916201/background-spawned-process-in-expect
-spawn -ignore HUP /opt/forticlientsslvpn/64bit/forticlientsslvpn_cli --server https://kdvpn.indeni-ops.com:8443 --vpnuser hparker
+spawn -ignore HUP /opt/forticlientsslvpn/64bit/forticlientsslvpn_cli --server https://kdvpn.indeni-ops.com:8443 --vpnuser hparker --keepalive
 
 expect "Password for VPN:"
 send "@qQ/)k9kum%)@RFD\r"
